@@ -8,20 +8,22 @@
 $http = eZHTTPTool::instance();
 $db = eZDB::instance();
 
-$query = "SELECT * FROM ezzip WHERE zipcode like '".utf8_decode($http->variable('q'))."%' OR zipcode LIKE '%,".utf8_decode($http->variable('q'))."%' LIMIT 60";
+$query = "SELECT * FROM ezplz WHERE plz_plz like '".utf8_decode($http->variable('q'))."%' OR plz_plz LIKE '%,".utf8_decode($http->variable('q'))."%' LIMIT 60";
 $rows = $db -> arrayQuery( $query );
 
 $djson = array();
 if (count($rows)) {
 	foreach($rows as $adr) {
-		$tmp = explode(",",$adr["zipcode"]);      
+		$tmp = explode(",",$adr["plz_plz"]);      
 		foreach($tmp as $t) {
 			$djson[] = array("value" => $t,
-			              	 "name" => $t." ".$adr["zip_city"],
-			              	 "city" => $adr["zip_city"] );
+			              	 "name" => $t." ".$adr["plz_ort"],
+			              	 "ort" => $adr["plz_ort"] );
 		}
 	}
 }
+
+
 
 header("Content-Type: application/json;charset=UTF-8");
 echo $http->variable('callback').'('.json_encode($djson).');';

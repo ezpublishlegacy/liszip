@@ -23,7 +23,7 @@ Installing liszip extension
    Alternatively you can also enable the extension over the backend.
    Go to setup -> extensions -> tick the checkbox -> then press refresh button  
 
-3. Generate new table "ezzip" with the required fields and zip codes in your database
+3. Import liszip.sql file into ez database
 
 4. Run the php script from commandline:
 

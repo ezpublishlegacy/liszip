@@ -1,7 +1,7 @@
 liszip
 ============
 
-Extension to provide zip codes as json from database
+Extension to provide german zip codes, cities and more dependend data as json from database
 
 Requirements:
 -------------
